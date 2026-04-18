@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f172a;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: #020617;
+  padding: 25px;
+  border-right: 1px solid #1e293b;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+  font-size: 24px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Inputs */
+.input-panel {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.input-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(56,189,248,0.1);
+}
+
+.input-panel h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.input-panel input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: white;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.input-panel input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: #0f172a;
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.1);
+}
+
+.input-panel button {
+  margin-top: 20px;
+  padding: 14px;
+  width: 100%;
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(56,189,248,0.3);
+}
+
+.input-panel button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56,189,248,0.4);
+}
+
+.input-panel button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.input-panel button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Risk Panel */
+.risk-panel {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.risk-score {
+  font-size: 28px;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+.risk-high {
+  color: #ef4444;
+}
+
+.risk-medium {
+  color: #facc15;
+}
+
+.risk-low {
+  color: #22c55e;
+}
+
+/* Cards */
+.card {
+  background: #1e293b;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 12px;
+  border: 1px solid #334155;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 15px rgba(56,189,248,0.15);
+  transform: translateY(-2px);
+}
+
+/* 3D Viewer */
+.viewer {
+  height: 500px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  border-radius: 16px;
+  margin-top: 25px;
+  border: 2px solid #1e293b;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .viewer {
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .input-panel, .risk-panel {
+    padding: 20px;
+  }
+
+  .viewer {
+    height: 350px;
+  }
+
+  .sidebar {
+    padding: 20px;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
